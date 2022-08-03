@@ -46,9 +46,9 @@ module.exports = appInfo => {
       // 用户名
       user: 'root',
       // 密码
-      password: 'litai7410',
+      password: 'password',
       // 数据库名
-      database: 'test',
+      database: 'juejue-cost',
     },
     // 是否加载到 app 上，默认开启
     app: true,
