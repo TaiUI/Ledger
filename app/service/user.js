@@ -5,7 +5,7 @@ class UserService extends Service {
   async getUserByName(username) {
     const { app } = this;
     try {
-      return await app.mysql.get('user', {username});
+      return await app.mysql.get('user', { username });
     } catch (error) {
       console.log(error);
       return null;
@@ -17,6 +17,22 @@ class UserService extends Service {
     const { app } = this;
     try {
       return await app.mysql.insert('user', params);
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
+  // 修改用户信息
+  async editUserInfo(params) {
+    const { ctx, app } = this;
+    try {
+      // 通过 app.mysql.update 方法，指定 user 表，
+      return await app.mysql.update('user', {
+        ...params, // 要修改的参数体，直接通过 ... 扩展操作符展开
+      }, {
+        id: params.id, // 筛选出 id 等于 params.id 的用户
+      });
     } catch (error) {
       console.log(error);
       return null;
